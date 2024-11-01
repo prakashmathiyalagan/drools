@@ -1,6 +1,8 @@
 package com.data;
 
-public class Employee {
+import java.io.Serializable;
+
+public class Employee implements Serializable {
     public String getEmpId() {
         return empId;
     }

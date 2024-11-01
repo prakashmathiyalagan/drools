@@ -11,7 +11,7 @@ end
 
 rule "Suggest current Role"
     when
-        e:Employee(salary < 10)
+        e:Employee(salary < 100)
     then
-        e.setRole("Clerk");
+        e.setRole("Ast Manager");
 end

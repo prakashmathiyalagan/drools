@@ -8,7 +8,7 @@ public class SparkProcess {
     private static Logger logger = Logger.getLogger(SparkProcess.class.getName());
 
     public static void main(String[] args) {
-        SparkSession sparkSession = SparkSession.builder().getOrCreate();
+        SparkSession sparkSession = SparkSession.builder().master("local").getOrCreate();
         logger.info("Spark session: " + sparkSession);
     }
 }

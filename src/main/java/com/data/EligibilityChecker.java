@@ -16,10 +16,10 @@ public class EligibilityChecker {
     public static void main(String[] args) {
         KieServices kieServices = KieServices.Factory.get();
         KieFileSystem kfs = kieServices.newKieFileSystem();
-        //...
-        Resource res = kieServices.getResources().newFileSystemResource("src/main/resources/rules.drl");
-        kfs.write("src/main/resources/rules.drl", res);
-        KieBuilder kieBuilder = kieServices.newKieBuilder(kfs).buildAll();
+        Resource res = ResourceFactory.newClassPathResource("rules.drl");
+        kfs.write(res);
+        KieBuilder kieBuilder = kieServices.newKieBuilder(kfs);
+        kieBuilder.buildAll();
         Results results = kieBuilder.getResults();
         if (results.hasMessages(Message.Level.ERROR)) {
             System.out.println(results.getMessages());

@@ -1,0 +1,13 @@
+package com.data;
+
+import com.data.Employee;
+
+dialect  "mvel"
+
+rule "Suggest Manager Role"
+    when
+        e:Employee(experience > 10)
+        e:Employee(salary > 1000000 && salary <= 2500000)
+    then
+        e.setRole("Manager");
+end

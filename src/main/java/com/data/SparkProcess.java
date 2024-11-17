@@ -4,7 +4,6 @@ import org.apache.spark.api.java.function.MapFunction;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Encoders;
 import org.apache.spark.sql.SparkSession;
-import org.apache.spark.sql.types.DataTypes;
 import org.kie.api.KieBase;
 import org.kie.api.KieServices;
 import org.kie.api.builder.KieBuilder;
@@ -37,7 +36,6 @@ public class SparkProcess {
         employee2.setSalary(9.00);
         Dataset<Employee> inputData = sparkSession.createDataset(Arrays.asList(employee1, employee2), Encoders.bean(Employee.class));
         inputData.show(false);
-        sparkSession.udf().register("ruleUdf", new RuleUdf(), DataTypes.StringType);
 
         Dataset<Employee> output = inputData.map(new MapFunction<Employee, Employee>() {
             @Override

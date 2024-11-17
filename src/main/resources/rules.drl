@@ -4,14 +4,14 @@ dialect  "mvel"
 
 rule "Suggest Manager Role"
     when
-        e:Employee(experience >= 10 && salary > 100 && salary <= 2500000)
+        $e:Employee(experience >= 10 && salary > 100 && salary <= 2500000)
     then
-        e.setRole("Manager");
+        $e.role="Manager";
 end
 
 rule "Suggest current Role"
     when
-        e:Employee(salary < 100)
+        $e:Employee(salary < 100)
     then
-        e.setRole("Ast Manager");
+        $e.role="Ast Manager";
 end
